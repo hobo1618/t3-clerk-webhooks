@@ -1,7 +1,12 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { nanoid } from "nanoid";
 
 export const userRouter = createTRPCRouter({
+  getAll: publicProcedure
+    .query(async ({ ctx }) => {
+      return ctx.prisma.user.findMany();
+    }),
   getById: publicProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
@@ -21,7 +26,7 @@ export const userRouter = createTRPCRouter({
       try {
         await ctx.prisma.user.create({
           data: {
-            id: "test",
+            id: nanoid(),
             name: input.name,
           },
         });

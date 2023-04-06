@@ -25,6 +25,7 @@
     "react-dom": "18.2.0",
     "superjson": "1.12.2",
     "svix": "^0.82.1",
+    "unique-names-generator": "^4.7.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
